@@ -1,0 +1,17 @@
+#include <Servo.h>
+
+Servo myServo;    // Membuat objek servo
+int potPin = A0;  // Pin potensiometer
+int potValue;     // Nilai potensiometer
+int angle;        // Sudut servo
+
+void setup() {
+  myServo.attach(9); // Servo terhubung ke pin 9
+}
+
+void loop() {
+  potValue = analogRead(potPin);                // Membaca nilai potensiometer
+  angle = map(potValue, 0, 1023, 0, 180);       // Mengubah nilai potensiometer ke sudut servo (0-180 derajat)
+  myServo.write(angle);                         // Mengatur servo sesuai sudut
+  delay(15);                                    // Tunggu sebentar agar servo stabil
+}
